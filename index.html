@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const name = prompt("Please enter your name:", "John Doe");
+
+        // if (name === null) {
+        //     alert("You canceled the prompt.");
+        // } else if (name === "") {
+        //     alert("You didn't enter a name.");
+        // } else {
+        //     alert("Hello, " + name + "!");
+        // }
+
+        function getComputerMove() {
+            const randomNumber = Math.floor(Math.random() * 3) + 1;
+            let move;
+
+            if (randomNumber == 1) {
+                move = "ROCK"
+
+            }
+            else if (randomNumber == 2) {
+                move = "PAPER"
+            } else {
+                move = "SCISSOR"
+            }
+            return move;
+        }
+
+        function playground(playerSelection, computerselection) {
+            if (playerSelection == "PAPER") {
+                if (computerselection == "ROCK") {
+                    return "You win Paper beats rock"
+                }
+                else if(computerselection == "PAPER"){
+                    return "It's a tie"
+                }
+                else {
+                    return "You lose Scissor beats rock"
+                }
+            }
+            else if (playerSelection == "ROCK") {
+                if (computerselection == "PAPER") {
+                    return "You lose Paper beats rock"
+                }
+                else if(computerselection == "ROCK"){
+                    return "It's a tie"
+                }
+                else {
+                    return "You win Rock beats scissor"
+                }
+            }
+            else {
+                if (computerselection == "ROCK") {
+                    return "You lose Rock beats scissor"
+                }
+                else if(computerselection == "SCISSOR"){
+                    return "It's a tie"
+                }
+                else {
+                    return "You win scissor beats paper"
+                }
+            }
+
+        }
+        function game() {
+            let computer = 0
+            let player = 0
+            for (let i = 0; i < 8; i++) {
+                const playerSelection = "ROCK"
+                const computerSelection = getComputerMove();
+                
+                let display = playground(playerSelection, computerSelection);
+                if (display.indexOf("win") != -1) {
+                    player++
+                }
+                else if(display.indexOf("lose") != -1){
+                    computer++
+                }
+
+                console.log(display);
+            }
+            if (computer > player) {
+                console.log("Computer wins! Score: Player: " +player + " Computer: "+ computer)
+
+            } else if (computer == player) {
+                console.log("It's a tie! Score: Player: " +player + " Computer: "+ computer)
+            }
+            else {
+                console.log("You win! Score: Player: " +player + " Computer: "+ computer)
+            }
+        }
+        game();
+    </script>
+</body>
+
+</html>
